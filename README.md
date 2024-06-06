@@ -1,8 +1,3 @@
-# React + Vite
+# E-shop. E-commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Developing a functional e-commerce website where users can browse products, add them to a cart, and complete the purchase. HTML, CSS, JavaScript, React were used for the front-end; Node.js, Express.js,  Postgres were used for the back-end; and Stripe was for payment processing.
