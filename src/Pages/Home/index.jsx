@@ -6,6 +6,14 @@ import { ShoppingCartContext } from "../../Context";
 function Home() {
   const context = useContext(ShoppingCartContext);
 
+  const renderView = () => {
+    if (context.searchByTitle?.length > 0) {
+      return <div>Hola Mundo</div>;
+    } else {
+      return context.items?.map((item) => <Card key={item.id} data={item} />);
+    }
+  };
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80 mb-4 ">
@@ -18,9 +26,7 @@ function Home() {
         onChange={(e) => context.setSearchByTitle(e.target.value)}
       />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {context.items?.map((item) => (
-          <Card key={item.id} data={item} />
-        ))}
+        {renderView()}
       </div>
 
       <ProductDetail />
