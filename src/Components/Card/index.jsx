@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
 
 import { ShoppingCartContext } from "../../Context";
 
@@ -11,9 +11,42 @@ const Card = (data) => {
     context.setProductToShow(productDetail);
   };
 
+  const addProductsToCart = (event, productData) => {
+    event.stopPropagation();
+    context.setCount(context.count + 1);
+    context.setCartProducts([...context.cartProducts, productData]);
+    context.openCheckoutSideMenu();
+    context.closeProductDetail();
+    console.log(context.cartProducts);
+  };
+
+  const renderIcon = (id) => {
+    const isInCard =
+      context.cartProducts.filter((product) => product.id === id).length > 0;
+
+    if (isInCard) {
+      return (
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-green-500 w-6 h-6 rounded-full m-2 p-1">
+          <CheckIcon className="h-6 w-6 text-white" />
+        </div>
+      );
+    } else {
+      return (
+        <div
+        className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+        onClick={(event) => addProductsToCart(event, data.data)}
+      >
+        <PlusIcon className="h-6 w-6 text-black" />
+      </div>
+      )
+    }
+
+  };
+
   return (
-    <div className="bg-white cursor-pointer w-56 h-60 rounded-lg"
-    onClick={() => showProduct(data.data)}
+    <div
+      className="bg-white cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
     >
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
@@ -24,12 +57,7 @@ const Card = (data) => {
           src={data.data.images[0]}
           alt={data.data.title}
         />
-        <div
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-          onClick={() => context.setCount(context.count + 1)}
-        >
-          <PlusIcon className="h-6 w-6 text-black" />
-        </div>
+        {renderIcon(data.data.id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light">{data.data.title}</span>
