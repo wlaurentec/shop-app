@@ -13,17 +13,14 @@ function MyOrders() {
         <h1 className="font-medium text-xl">My Orders</h1>
       </div>
 
-      {context.order.map((order, index) => {
-        return (
-          <Link key={index} to={`/my-orders/${index}`}>
-            <OrdersCard
-              totalPrice={order.totalPrice}
-              totalProducts={order.total}
-              
-            />
-          </Link>
-        );
-      })}
+      {context.order.map((order, index) => (
+        <Link key={index} to={`/my-orders/${index}`}>
+          <OrdersCard
+            totalPrice={order.totalPrice}
+            totalProducts={order.products.length} // Revisar totalProducts={order.totalProducts}
+          />
+        </Link>
+      ))}
     </Layout>
   );
 }
