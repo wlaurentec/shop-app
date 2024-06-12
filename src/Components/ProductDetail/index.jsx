@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
-  console.log(context.productToShow);
   return (
     <aside
       className={`${
