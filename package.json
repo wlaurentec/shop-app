@@ -1,7 +1,7 @@
 {
   "name": "shop-pp",
   "private": true,
-  "homepage": "https://wlaurentec.github.io/shop-app",
+  "homepage": "https://wlaurentec.github.io",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -13,6 +13,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.3",
+    "@heroicons/vue": "^2.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1"
